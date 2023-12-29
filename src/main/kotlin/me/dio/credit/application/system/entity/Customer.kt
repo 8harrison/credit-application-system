@@ -16,5 +16,5 @@ data class Customer(
     @Column(nullable = false) @OneToMany(fetch = FetchType.LAZY, cascade = arrayOf(CascadeType.REMOVE, CascadeType.PERSIST),
         mappedBy = "customer")
     var credits: List<Credit> = mutableListOf(),
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) val id: Long? = null
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Long? = null
 )
