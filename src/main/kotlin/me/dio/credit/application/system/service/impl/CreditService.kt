@@ -22,7 +22,12 @@ class CreditService(
     }
 
     override fun findAllByCustomer(customerId: Long): List<Credit> {
-        return creditRepository.findAllByCustomerId(customerId)
+        try {
+            customerService.findById(customerId)
+            return creditRepository.findAllByCustomerId(customerId)
+        } catch (e: BusinessException) {
+            throw e
+        }
     }
 
 
